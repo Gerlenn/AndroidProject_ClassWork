@@ -1,10 +1,10 @@
 package com.example.androidproject
 
 class DataClassEx {
-
+    lateinit var wallet: Wallet
 
     companion object {
-        lateinit var wallet: Wallet
+
 
         @JvmStatic
         fun main(args: Array<String>) {
@@ -16,7 +16,7 @@ class DataClassEx {
 
             println("_________________________")
 
-            val dataClassEx = DataClassEx
+            val dataClassEx = DataClassEx()
 
             repeat(10) {
                 val random = (1..2).random()
