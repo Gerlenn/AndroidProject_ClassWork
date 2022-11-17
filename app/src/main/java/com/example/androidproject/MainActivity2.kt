@@ -63,6 +63,8 @@ class MainActivity2 : AppCompatActivity() {
             context.startActivity(intent)
         }
     }
+
+
     // Выход из приложения через кнопку назад
 //    override fun onBackPressed() {
 //        super.onBackPressed()

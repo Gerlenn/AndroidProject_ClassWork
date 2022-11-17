@@ -18,18 +18,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btnGoToActivity2 = findViewById<Button>(R.id.btnGoToActivity2)
-
-        btnGoToActivity2.setOnClickListener{
+//        val btnGoToActivity2 = findViewById<Button>(R.id.btnGoToActivity2)
+    // btnGoToActivity2.setOnClickListener{
 //            startActivity(
-//
 //                Intent(this, MainActivity2::class.java)
 //                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
 //                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 //MainActivity2 will not be added to the backstack
                 // .addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY) 2-ое активити не будет добавлено в историю
 //            )
-        }
+      //  }
         supportActionBar?.setBackgroundDrawable((ColorDrawable(resources.getColor(R.color.myColor))))
         supportActionBar?.title = "New title for MaiActivity"
         //supportActionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.mypng))//добавляем  иконку в топбар
