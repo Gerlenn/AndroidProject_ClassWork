@@ -17,11 +17,12 @@ class MainActivity3 : AppCompatActivity() {
 
         val editText = findViewById<EditText>(R.id.et_text)
         val editText2 = findViewById<EditText>(R.id.et_text2)
-        val button = findViewById<Button>(R.id.btn_displayText)
-        val textView = findViewById<TextView>(R.id.textView3)
 
-        val layout1 = findViewById<TextInputLayout>(R.id.til)
-        val layout2 = findViewById<TextInputLayout>(R.id.til2)
+        val button = findViewById<Button>(R.id.btn_displayText)
+        val textView = findViewById<TextView>(R.id.tv_text)
+
+        val layout1 = findViewById<TextInputLayout>(R.id.textInputLayout)
+        val layout2 = findViewById<TextInputLayout>(R.id.til)
 
         val rb1 = findViewById<RadioButton>(R.id.rb1)
         val rb2 = findViewById<RadioButton>(R.id.rb2)
@@ -40,25 +41,28 @@ class MainActivity3 : AppCompatActivity() {
                 rb2.isChecked = true
         }
 
+
         val dialog = AlertDialog.Builder(this)
             .setTitle("Information")
-            .setMessage("I am android developer")
+            .setMessage("login completed")
             .setCancelable(false)//нельзя закрыть сообщение, если нажать на экрран(нужно обязательно выбрать пункт)
-            .setPositiveButton("OK"){dialog, _ ->
+            .setPositiveButton("OK") { dialog, _ ->
                 Toast.makeText(this, "called positive", Toast.LENGTH_SHORT).show()
             }
-            .setNegativeButton("Cancel"){dialog, _ ->
+            .setNegativeButton("Cancel") { dialog, _ ->
                 dialog.cancel()
             }
 
         button.setOnClickListener {
             dialog.show()
+
             if (editText.text.toString().isEmpty()) {
-                Toast.makeText(this, "email can't be empty", Toast.LENGTH_SHORT).show()
+                layout1.setErrorIconDrawable(R.drawable.ic_warning)
+                editText.error = "name cant be empty"
             } else if (editText2.text.toString().isEmpty()) {
-                Toast.makeText(this, "email can't be empty", Toast.LENGTH_SHORT).show()
-            } else
-                textView.text = "${editText.text.toString()} ${editText2.text.toString()}"
+                layout2.setErrorIconDrawable(R.drawable.ic_warning)
+                editText2.error = "password cant be empty"
+            }
         }
     }
 }

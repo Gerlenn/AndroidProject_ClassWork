@@ -1,5 +1,6 @@
 package com.example.androidproject
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -25,6 +26,9 @@ class MainActivity2 : AppCompatActivity() {
 
         val data: String = intent.getStringExtra(KEY) ?: "no data"
         textView2.text = data
+
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
