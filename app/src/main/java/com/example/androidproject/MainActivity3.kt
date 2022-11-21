@@ -1,5 +1,6 @@
 package com.example.androidproject
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -8,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.androidproject.KotlinActivity.Companion.kotlinActivityStart
 import com.google.android.material.textfield.TextInputLayout
 
 class MainActivity3 : AppCompatActivity() {
@@ -26,6 +28,12 @@ class MainActivity3 : AppCompatActivity() {
 
         val rb1 = findViewById<RadioButton>(R.id.rb1)
         val rb2 = findViewById<RadioButton>(R.id.rb2)
+
+        val btn1 = findViewById<Button>(R.id.btn1)
+
+        btn1.setOnClickListener {
+            startActivity(Intent(this, KotlinActivity::class.java))
+        }
 
         rb1.setOnClickListener {
             if (rb1.isChecked) {
@@ -53,6 +61,9 @@ class MainActivity3 : AppCompatActivity() {
                 dialog.cancel()
             }
 
+
+
+
         button.setOnClickListener {
             dialog.show()
 
@@ -62,6 +73,10 @@ class MainActivity3 : AppCompatActivity() {
             } else if (editText2.text.toString().isEmpty()) {
                 layout2.setErrorIconDrawable(R.drawable.ic_warning)
                 editText2.error = "password cant be empty"
+            } else {
+                startActivity(Intent(this, KotlinActivity::class.java))//так делать нельзя! Можно что угодно сделать с активити!
+                kotlinActivityStart(this)
+                textView.text = "Login - ${editText.text.toString()}, Password - ${editText2.text.toString()}"
             }
         }
     }

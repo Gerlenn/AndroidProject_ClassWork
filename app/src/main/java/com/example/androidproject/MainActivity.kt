@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = "New title for MaiActivity"
         //supportActionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.mypng))//добавляем  иконку в топбар
 
-
         val textView = findViewById<TextView>(R.id.textView)
         val btnCM = findViewById<Button>(R.id.btnCM)
 
@@ -48,5 +47,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity3::class.java))
         }
 
+        val button2 = findViewById<Button>(R.id.button2)
+        button2.setOnClickListener {
+            startActList(this)
+        }
+    }
+
+
+    companion object{
+        fun startActList(context: Context){
+            context.startActivity(Intent(context, ListViewKotlinActivity::class.java))
+        }
     }
 }

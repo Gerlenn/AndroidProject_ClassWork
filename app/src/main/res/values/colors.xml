@@ -10,4 +10,5 @@
     <color name="orange">#FF5722</color>
     <color name="myColor">#8E82C6</color>
     <color name="myColorGray">#E6E6FA</color>
+    <color name="myColorBtn">#2979FF</color>
 </resources>
