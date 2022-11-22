@@ -1,6 +1,5 @@
 package com.example.androidproject
 
-import android.app.appsearch.BatchResultCallback
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
-import com.example.androidproject.kotlin.HouseBuilder
 
 class KotlinActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
