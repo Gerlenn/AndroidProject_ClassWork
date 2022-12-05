@@ -1,6 +1,5 @@
 package com.example.androidproject
 
-import android.media.Image
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,11 +10,11 @@ class ItemsViewModel : ViewModel() {
     private val _items = MutableLiveData<List<ItemsModel>>()//для считывания
     val items: LiveData<List<ItemsModel>> = _items
 
-    private val _msg = MutableLiveData<String>()
-    val msg: LiveData<String> = _msg
+    private val _msg = MutableLiveData<Int>()
+    val msg: LiveData<Int> = _msg
 
-    private val _bundle = MutableLiveData<NavigateWithBundle>()
-    val bundle: LiveData<NavigateWithBundle> = _bundle
+    private val _bundle = MutableLiveData<NavigateWithBundle?>()
+    val bundle: LiveData<NavigateWithBundle?> = _bundle
 
 
     fun getData(){
@@ -73,7 +72,7 @@ class ItemsViewModel : ViewModel() {
     }
 
     fun imageViewClicked(){
-        _msg.value = "ImageView clicked"
+        _msg.value = R.string.image_view
     }
 
     fun elementClicked(name: String, date: String, imageView: Int){
@@ -82,6 +81,10 @@ class ItemsViewModel : ViewModel() {
             date = date,
             image = imageView
         )
+    }
+//одноразовое действие занулением бандла
+    fun userNavigated(){
+        _bundle.value = null
     }
 
 }

@@ -4,16 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidproject.BundleConstants.IMAGE_VIEW
 import com.example.androidproject.adapter.ItemsAdapter
 import com.example.androidproject.listener.itemListener
-import com.example.androidproject.model.ItemsModel
+
+//not use
+//const val NAME = "name"
 
 class ItemsFragment : Fragment(), itemListener {
 
@@ -43,25 +44,31 @@ class ItemsFragment : Fragment(), itemListener {
         }
 
         viewModel.msg.observe(viewLifecycleOwner){ msg ->
-            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+            //getString(msg) обязательно, чтобы наш ресурс преобразовать в строку
+            Toast.makeText(context, getString(msg), Toast.LENGTH_SHORT).show()
         }
 
         viewModel.bundle.observe(viewLifecycleOwner){navBundle ->
-            val  detailsFragment = DetailsFragment()
-            val bundle = Bundle()
-            bundle.putString("name", navBundle.name)
-            bundle.putString("date", navBundle.date)
-            bundle.putInt("imageView", navBundle.image)
-            detailsFragment.arguments = bundle
+            //проверка на навигацию пользователя
+            if(navBundle != null) {
+                val detailsFragment = DetailsFragment()
+                val bundle = Bundle()
+                bundle.putString(NAME, navBundle.name)
+                bundle.putString(DATE, navBundle.date)
+                bundle.putInt(IMAGE_VIEW, navBundle.image)
+                detailsFragment.arguments = bundle
 
-            Toast.makeText(context, "called", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "called", Toast.LENGTH_SHORT).show()
 
-            parentFragmentManager
-                .beginTransaction()
-                .replace(R.id.activity_container, detailsFragment)
-                //.add(R.id.activity_container, detailsFragment)
-                .addToBackStack("Details")
-                .commit()
+                parentFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.activity_container, detailsFragment)
+                    //.add(R.id.activity_container, detailsFragment)
+                    .addToBackStack("Details")
+                    .commit()
+                //в конец нашего действия
+                viewModel.userNavigated()
+            }
         }
     }
 
@@ -71,5 +78,11 @@ class ItemsFragment : Fragment(), itemListener {
 
     override fun onElementSelected(name: String, date: String, imageView: Int) {
         viewModel.elementClicked(name, date, imageView)
+    }
+
+    //2 способ создания констант (можно использовать потому что мы видим откуда берём)
+    companion object{
+        const val DATE = "date"
+        const val NAME = "name"
     }
 }
