@@ -20,7 +20,9 @@ class ItemsFragment : Fragment(), itemListener {
 
     private lateinit var itemsAdapter: ItemsAdapter // private var itemsAdapter: ItemsAdapter = ItemsAdapter() можно так но не нужно
 
-    private val viewModel: ItemsViewModel by viewModels()
+    private val viewModel: ItemsViewModel by viewModels {
+        ItemsViewModelsFactory(MyParam())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
