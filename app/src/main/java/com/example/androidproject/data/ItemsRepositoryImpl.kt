@@ -1,23 +1,12 @@
-package com.example.androidproject
+package com.example.androidproject.data
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.example.androidproject.R
+import com.example.androidproject.domain.ItemsRepository
 import com.example.androidproject.model.ItemsModel
 
-class ItemsViewModel(private val myParam: MyParam) : ViewModel() {
+class ItemsRepositoryImpl: ItemsRepository {
 
-    private val _items = MutableLiveData<List<ItemsModel>>()//для считывания
-    val items: LiveData<List<ItemsModel>> = _items
-
-    private val _msg = MutableLiveData<Int>()
-    val msg: LiveData<Int> = _msg
-
-    private val _bundle = MutableLiveData<NavigateWithBundle?>()
-    val bundle: LiveData<NavigateWithBundle?> = _bundle
-
-
-    fun getData(){
+    override fun getData(): List<ItemsModel> {
         val listItems = listOf<ItemsModel>(
             ItemsModel(R.drawable.android,
                 "Android",
@@ -68,32 +57,6 @@ class ItemsViewModel(private val myParam: MyParam) : ViewModel() {
                 "23.12.1992"
             )
         )
-        _items.value = listItems// записываем все значения в data
+        return listItems
     }
-
-    fun imageViewClicked(){
-        _msg.value = R.string.image_view
-    }
-
-    fun elementClicked(name: String, date: String, imageView: Int){
-        _bundle.value = NavigateWithBundle(
-            name = name,
-            date = date,
-            image = imageView
-        )
-    }
-//одноразовое действие занулением бандла
-    fun userNavigated(){
-        _bundle.value = null
-    }
-
 }
-
-data class NavigateWithBundle(
-    val image: Int,
-    val name: String,
-    val date: String,
-
-)
-
-class MyParam(){}

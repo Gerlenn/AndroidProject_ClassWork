@@ -1,4 +1,4 @@
-package com.example.androidproject
+package com.example.androidproject.presentation.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.androidproject.BundleConstants.IMAGE_VIEW
-import com.example.androidproject.ItemsFragment.Companion.DATE
-import com.example.androidproject.ItemsFragment.Companion.NAME
+import com.example.androidproject.R
+import com.example.androidproject.utils.BundleConstants.IMAGE_VIEW
+import com.example.androidproject.presentation.view.ItemsFragment.Companion.DATE
+import com.example.androidproject.presentation.view.ItemsFragment.Companion.NAME
 
 //1 способ создания констант
 
