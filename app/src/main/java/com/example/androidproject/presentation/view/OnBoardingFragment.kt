@@ -1,12 +1,11 @@
 package com.example.androidproject.presentation.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.androidproject.R
 import com.example.androidproject.databinding.FragmentOnBoardingBinding
 
 class OnBoardingFragment : Fragment() {
@@ -32,10 +31,7 @@ class OnBoardingFragment : Fragment() {
 
         viewModel.nav.observe(viewLifecycleOwner) {
             if (it != null) {
-                parentFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.activity_container, ItemsFragment())
-                    .commit()
+                Navigation.fmReplace(parentFragmentManager, ItemsFragment(), false)
                 viewModel.finishPerformed()
             }
         }

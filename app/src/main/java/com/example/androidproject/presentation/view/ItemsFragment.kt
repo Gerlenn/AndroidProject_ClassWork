@@ -12,13 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.androidproject.R
 import com.example.androidproject.data.ItemsRepositoryImpl
 import com.example.androidproject.domain.ItemsInteractor
-import com.example.androidproject.domain.ItemsRepository
-import com.example.androidproject.utils.BundleConstants.IMAGE_VIEW
 import com.example.androidproject.presentation.adapter.ItemsAdapter
 import com.example.androidproject.presentation.adapter.listener.itemListener
-
-//not use
-//const val NAME = "name"
+import com.example.androidproject.utils.BundleConstants.DATE
+import com.example.androidproject.utils.BundleConstants.IMAGE_VIEW
+import com.example.androidproject.utils.BundleConstants.NAME
 
 class ItemsFragment : Fragment(), itemListener {
 
@@ -40,23 +38,21 @@ class ItemsFragment : Fragment(), itemListener {
 
         itemsAdapter = ItemsAdapter(this)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(context)//requireContext() или requireActivity()
+        recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = itemsAdapter
 
         viewModel.getData()
 
-        viewModel.items.observe(viewLifecycleOwner){ listItems -> //получаем данные из viewModel
+        viewModel.items.observe(viewLifecycleOwner) { listItems ->
             itemsAdapter.submitList(listItems)
         }
 
-        viewModel.msg.observe(viewLifecycleOwner){ msg ->
-            //getString(msg) обязательно, чтобы наш ресурс преобразовать в строку
+        viewModel.msg.observe(viewLifecycleOwner) { msg ->
             Toast.makeText(context, getString(msg), Toast.LENGTH_SHORT).show()
         }
 
-        viewModel.bundle.observe(viewLifecycleOwner){navBundle ->
-            //проверка на навигацию пользователя
-            if(navBundle != null) {
+        viewModel.bundle.observe(viewLifecycleOwner) { navBundle ->
+            if (navBundle != null) {
                 val detailsFragment = DetailsFragment()
                 val bundle = Bundle()
                 bundle.putString(NAME, navBundle.name)
@@ -64,15 +60,7 @@ class ItemsFragment : Fragment(), itemListener {
                 bundle.putInt(IMAGE_VIEW, navBundle.image)
                 detailsFragment.arguments = bundle
 
-                Toast.makeText(context, "called", Toast.LENGTH_SHORT).show()
-
-                parentFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.activity_container, detailsFragment)
-                    //.add(R.id.activity_container, detailsFragment)
-                    .addToBackStack("Details")
-                    .commit()
-                //в конец нашего действия
+                Navigation.fmReplace(parentFragmentManager, detailsFragment, true)
                 viewModel.userNavigated()
             }
         }
@@ -84,11 +72,5 @@ class ItemsFragment : Fragment(), itemListener {
 
     override fun onElementSelected(name: String, date: String, imageView: Int) {
         viewModel.elementClicked(name, date, imageView)
-    }
-
-    //2 способ создания констант (можно использовать потому что мы видим откуда берём)
-    companion object{
-        const val DATE = "date"
-        const val NAME = "name"
     }
 }
