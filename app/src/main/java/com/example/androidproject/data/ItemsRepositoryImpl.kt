@@ -4,7 +4,7 @@ import com.example.androidproject.R
 import com.example.androidproject.domain.ItemsRepository
 import com.example.androidproject.model.ItemsModel
 
-class ItemsRepositoryImpl: ItemsRepository {
+class ItemsRepositoryImpl : ItemsRepository {
 
     override fun getData(): List<ItemsModel> {
         val listItems = listOf<ItemsModel>(

@@ -6,14 +6,18 @@ import com.example.androidproject.R
 
 object Navigation {
 
-    fun fmReplace(parentFragmentManager: FragmentManager, fragment: Fragment, addToBackStack: Boolean) {
-        if(addToBackStack) {
+    fun fmReplace(
+        parentFragmentManager: FragmentManager,
+        fragment: Fragment,
+        addToBackStack: Boolean,
+    ) {
+        if (addToBackStack) {
             parentFragmentManager
                 .beginTransaction()
                 .addToBackStack("")
                 .replace(R.id.activity_container, fragment)
                 .commit()
-        }else{
+        } else {
             parentFragmentManager
                 .beginTransaction()
 

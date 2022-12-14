@@ -8,7 +8,7 @@ import com.example.androidproject.domain.ItemsInteractor
 import com.example.androidproject.model.ItemsModel
 
 class ItemsViewModel(
-    private val itemsInteractor: ItemsInteractor
+    private val itemsInteractor: ItemsInteractor,
 ) : ViewModel() {
 
     private val _items = MutableLiveData<List<ItemsModel>>()

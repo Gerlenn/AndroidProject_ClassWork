@@ -4,16 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidproject.R
-import com.example.androidproject.presentation.adapter.listener.itemListener
 import com.example.androidproject.model.ItemsModel
+import com.example.androidproject.presentation.adapter.listener.itemListener
 
 class ItemsAdapter(
-    private val itemsListener: itemListener
-): RecyclerView.Adapter<ItemsViewHolder>() {
+    private val itemsListener: itemListener,
+) : RecyclerView.Adapter<ItemsViewHolder>() {
 
     private var listItems = mutableListOf<ItemsModel>()
 
-    fun submitList(list: List<ItemsModel>){
+    fun submitList(list: List<ItemsModel>) {
         this.listItems = list.toMutableList()
     }
 
