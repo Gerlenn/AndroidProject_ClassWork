@@ -17,14 +17,14 @@ import com.example.androidproject.presentation.adapter.listener.itemListener
 import com.example.androidproject.utils.BundleConstants.DATE
 import com.example.androidproject.utils.BundleConstants.IMAGE_VIEW
 import com.example.androidproject.utils.BundleConstants.NAME
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ItemsFragment : Fragment(), itemListener {
 
     private lateinit var itemsAdapter: ItemsAdapter
 
-    private val viewModel: ItemsViewModel by viewModels {
-        ItemsViewModelsFactory(ItemsInteractor(ItemsRepositoryImpl()))
-    }
+    private val viewModel: ItemsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
