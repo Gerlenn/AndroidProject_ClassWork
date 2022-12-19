@@ -1,4 +1,4 @@
-package com.example.androidproject.presentation.view
+package com.example.androidproject.presentation.view.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,13 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidproject.R
-import com.example.androidproject.data.ItemsRepositoryImpl
-import com.example.androidproject.domain.ItemsInteractor
 import com.example.androidproject.presentation.adapter.ItemsAdapter
 import com.example.androidproject.presentation.adapter.listener.itemListener
 import com.example.androidproject.utils.BundleConstants.DATE
 import com.example.androidproject.utils.BundleConstants.IMAGE_VIEW
 import com.example.androidproject.utils.BundleConstants.NAME
+import com.example.androidproject.utils.Navigation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

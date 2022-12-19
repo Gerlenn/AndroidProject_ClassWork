@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidproject.R
-import com.example.androidproject.model.ItemsModel
+import com.example.androidproject.domain.model.ItemsModel
 import com.example.androidproject.presentation.adapter.listener.itemListener
 
 class ItemsAdapter(

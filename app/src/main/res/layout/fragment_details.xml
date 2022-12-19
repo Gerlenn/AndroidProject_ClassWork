@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".presentation.view.DetailsFragment">
+    tools:context=".presentation.view.home.DetailsFragment">
 
     <ImageView
         android:id="@+id/dtImg"
@@ -51,6 +51,17 @@
 
     </TextView>
 
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="213dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="168dp"
+        android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dtDate"
+        app:layout_constraintVertical_bias="0.98" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
