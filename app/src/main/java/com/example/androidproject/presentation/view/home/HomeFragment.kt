@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import com.example.androidproject.R
 import com.example.androidproject.databinding.FragmentHomeBinding
 import com.example.androidproject.presentation.view.auth.OnBoardingFragment
+import com.example.androidproject.utils.coroutines.CoroutinesExample
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,13 +33,16 @@ class HomeFragment : Fragment() {
 
         viewModel.showUserData()
 
+        CoroutinesExample().testCoroutinesCancel()
+
         binding.btnGoToOnboarding.setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.activity_container, OnBoardingFragment())
                 .commit()
         }
 
-        viewModel.userCreds.observe(viewLifecycleOwner){
+
+        viewModel.userCreds.observe(viewLifecycleOwner) {
             binding.tvUserCreds.text = "${it.userName}\n${it.userPassword}"
         }
     }
